@@ -1,8 +1,16 @@
+<<<<<<< Tabnine <<<<<<<
 [build]
   command = "npm run build"
   publish = "dist"
 
 [[redirects]]
+  from = "/api/*"//+
+  to = "https://resilient-kangaroo-52fcb1.netlify.app/api/:splat"//+
+  status = 200//+
+  force = true//+
+//+
+[[redirects]]//+
   from = "/*"
   to = "/index.html"
   status = 200
+>>>>>>> Tabnine >>>>>>>// {"source":"chat"}
