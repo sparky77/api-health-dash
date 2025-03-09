@@ -4,7 +4,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://resilient-kangaroo-52fcb1.netlify.app/api/:splat"
+  to = "https://railway.com/project/7c9e1859-e696-45ec-b0de-e3060e527c91/api/:splat"
   status = 200
   force = true
 
