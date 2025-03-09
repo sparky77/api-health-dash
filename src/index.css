@@ -20,6 +20,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+::placeholder {
+  color: #999;
+}
+
+/* Add this new rule */
+input {
+  color: #999;  /* This sets the text color to black */
+  background-color: #ffffff;  /* This ensures the background is white */
+}
+
 a {
   font-weight: 500;
   color: #646cff;
