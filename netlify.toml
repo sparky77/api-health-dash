@@ -1,9 +1,10 @@
 [build]
   command = "npm install && npm run build"
-  publish = "/opt/build/repo/dist"
+  publish = "dist"
 
 [functions]
-  directory = "/opt/build/repo/backend"
+  directory = "backend"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
