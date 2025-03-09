@@ -6,7 +6,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+  origin: ['https://main--resilient-kangaroo-52fcb1.netlify.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
