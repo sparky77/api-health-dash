@@ -1,0 +1,12 @@
+{
+  "name": "api-health-dash-backend",
+  "version": "1.0.0",
+  "description": "Backend for API Health Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
