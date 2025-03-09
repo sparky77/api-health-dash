@@ -7,7 +7,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: ['https://main--resilient-kangaroo-52fcb1.netlify.app', 'http://localhost:3000'],
+  origin: [
+    'https://main--resilient-kangaroo-52fcb1.netlify.app',
+    'https://resilient-kangaroo-52fcb1.netlify.app',
+    'http://localhost:3000',
+    'https://apihealth-production.up.railway.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
