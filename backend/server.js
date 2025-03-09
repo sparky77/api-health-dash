@@ -6,8 +6,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-sapp.use(cors({
-  origin: 'https://resilient-kangaroo-52fcb1.netlify.app',,
+app.use(cors({
+  origin: 'https://resilient-kangaroo-52fcb1.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -15,12 +15,12 @@ sapp.use(cors({
 }));
 
 // Add this line after the CORS middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'http://localhost:3000');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'http://localhost:3000');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   next();
+// });
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
