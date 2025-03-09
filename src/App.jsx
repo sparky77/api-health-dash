@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://resilient-kangaroo-52fcb1.netlify.app';
-// Make sure to use `${API_BASE_URL}/api/check-health` when making requests
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
 export default function ApiHealthDashboard() {
   const [apiEndpoints, setApiEndpoints] = useState([]);
