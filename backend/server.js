@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 sapp.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: 'https://resilient-kangaroo-52fcb1.netlify.app',,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
