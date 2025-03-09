@@ -60,7 +60,7 @@ export default function ApiHealthDashboard() {
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white p-8 font-sans">
-      <motion.h1 
+      <motion.h1
         className="text-5xl font-extrabold mb-12 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -76,15 +76,22 @@ export default function ApiHealthDashboard() {
           type="text"
           placeholder="API Name"
           value={newEndpoint.name}
-          onChange={(e) => setNewEndpoint({...newEndpoint, name: e.target.value})}
+          onChange={(e) => setNewEndpoint({ ...newEndpoint, name: e.target.value })}
           className="mr-2 p-2 rounded text black"
         />
         <input
           type="text"
           placeholder="API URL"
           value={newEndpoint.url}
-          onChange={(e) => setNewEndpoint({...newEndpoint, url: e.target.value})}
+          onChange={(e) => setNewEndpoint({ ...newEndpoint, url: e.target.value })}
           className="mr-2 p-2 rounded text black"
+        />
+        <input
+          type="text"
+          placeholder="Bearer Token (optional)"
+          value={newEndpoint.token}
+          onChange={(e) => setNewEndpoint({ ...newEndpoint, token: e.target.value })}
+          className="mr-2 p-2 rounded text-black"
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Endpoint</button>
       </form>
@@ -100,30 +107,29 @@ export default function ApiHealthDashboard() {
           >
             <div className="p-6 relative">
               <h2 className="text-2xl font-bold mb-4">{api.name}</h2>
+              {api.token && <span className="text-xs bg-blue-500 text-white px-2 py-1 rounded">Token Set</span>}
               <div className="flex items-center justify-between mb-4">
                 <span className="text-lg font-medium">Status</span>
                 <motion.div
-                  animate={{ 
+                  animate={{
                     scale: apiStatuses[api._id] === "healthy" ? [1, 1.2, 1] : 1,
                     backgroundColor: apiStatuses[api._id] === "healthy" ? ["#10B981", "#34D399", "#10B981"] : "#EF4444"
                   }}
                   transition={{ repeat: Infinity, duration: 2 }}
-                  className={`w-6 h-6 rounded-full shadow-lg ${
-                    apiStatuses[api._id] === "healthy" ? "bg-green-500" : "bg-red-500"
-                  }`}
+                  className={`w-6 h-6 rounded-full shadow-lg ${apiStatuses[api._id] === "healthy" ? "bg-green-500" : "bg-red-500"
+                    }`}
                 />
               </div>
               <p className="text-sm text-gray-300 break-all">{api.url}</p>
-              <button 
+              <button
                 onClick={() => deleteEndpoint(api._id)}
                 className="mt-4 bg-red-500 text-white p-2 rounded"
               >
                 Delete
               </button>
             </div>
-            <div className={`h-1 w-full ${
-              apiStatuses[api._id] === "healthy" ? "bg-green-500" : "bg-red-500"
-            }`} />
+            <div className={`h-1 w-full ${apiStatuses[api._id] === "healthy" ? "bg-green-500" : "bg-red-500"
+              }`} />
           </motion.div>
         ))}
       </div>
