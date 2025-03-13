@@ -42,8 +42,10 @@ export default function ApiHealthDashboard() {
   const addEndpoint = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_BASE_URL}/api/endpoints`, newEndpoint);
-      setNewEndpoint({ name: '', url: '' });
+      await axios.post(`${API_BASE_URL}/api/endpoints`, newEndpoint, {
+        headers: newEndpoint.token ? { Authorization: `Bearer ${newEndpoint.token}` } : {}
+      });
+      setNewEndpoint({ name: '', url: '', token: '' });
       fetchEndpoints();
     } catch (error) {
       console.error('Error adding endpoint:', error);

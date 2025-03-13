@@ -38,13 +38,16 @@ connectToDatabase();
 const axios = require('axios');
 
 // Add this near the top of the file
-// Check health of all endpoints
 app.get('/api/check-health', async (req, res) => {
   try {
     const endpoints = await db.collection('endpoints').find().toArray();
     const healthResults = await Promise.all(endpoints.map(async (endpoint) => {
       try {
-        await axios.get(endpoint.url, { timeout: 5000 });
+        const config = {
+          timeout: 5000,
+          headers: endpoint.token ? { Authorization: `Bearer ${endpoint.token}` } : {}
+        };
+        await axios.get(endpoint.url, config);
         return { _id: endpoint._id, status: 'healthy' };
       } catch (error) {
         return { _id: endpoint._id, status: 'unhealthy' };
@@ -71,8 +74,9 @@ app.get('/api/endpoints', async (req, res) => {
 // Add a new endpoint
 app.post('/api/endpoints', async (req, res) => {
   try {
+    const { name, url, token } = req.body;
     const collection = db.collection('endpoints');
-    const result = await collection.insertOne(req.body);
+    const result = await collection.insertOne({ name, url, token });
     res.status(201).json(result);
   } catch (error) {
     res.status(500).json({ message: 'Error adding endpoint', error: error.message });
